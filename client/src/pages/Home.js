@@ -5,31 +5,41 @@ import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
+import { Row, Col } from 'antd';
+
+const style = {
+  item: {
+    background: "#FFF",
+    padding: "1rem"
+  }
+}
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
 
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
-          )}
-        </div>
-      </div>
+      <Row gutter={16}>
+        <Col md={8} >
+          <div style={style.item}>
+            Column 1
+          </div>
+        </Col>
+        <Col md={8} style={style.col}>
+          <div style={style.item}>
+            Column 2
+          </div>
+        </Col>
+        <Col md={8} style={style.col}>
+          <div style={style.item}>
+            Column 3
+          </div>
+        </Col>
+        <Col md={8} style={style.col}>
+          <div style={style.item}>
+            Column 4
+          </div>
+        </Col>
+      </Row>
     </main>
   );
 };
